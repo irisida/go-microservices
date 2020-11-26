@@ -1,3 +1,5 @@
+![](/assets/microservicesWithGo.png)
+
 # go-microservices
 
 - [1 - Basic web server with Go](/01-introduction)
