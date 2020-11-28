@@ -48,3 +48,17 @@ Now we've seen we can get the webserver running and accept a query param being p
 Let's have a look at what we'll be implementing here as a concept.
 
 ![](/02-mvc/assets/mvc-flow-model.png)
+
+So let's see how that looks in terms of code changes. We're adding in the service wrapper and the `dao` (data access object) to our codebase to keep with the pattern and make sure we have clear separation of concerns well defined. Within the model layer itself you will see we will have the models themselves and the data access objects that use the models. While coupled, these form a single layer, here called the domain, but is the `M` in the `MVC` for model.
+
+The `main.go` and the `app.go` remain unchanged, so I will omit further screenshots here to save having to digest them again. Let's see how the controller has changed. The controller implementation is updated to call the service for `GetUser` and handle the returned user data and pss it as the response to our `get` request to the endpoint. Where the request was invalid or bad it should also handle the error as the response too.
+
+![](/02-mvs/assets/mvc-controller-02.png)
+
+We can see the service is pretty transparent in that it is simply an abstract to the functionality of the `dao` in the domain layer. There's no much to add as its a straight through-and-through.
+
+![](/02-mvc/assets/mvc-service-02.png)
+
+We can then see in the `DAO` that we are encapsulating the data layer concerns and this would allow us to make the persistence layer interchangeable if required.
+
+![](/02-mvc/assets/mvc-dao.png)
