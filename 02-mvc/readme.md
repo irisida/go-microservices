@@ -40,3 +40,11 @@ and we can expert a response along the lines of What we see here.
 * Connection #0 to host localhost left intact
 * Closing connection 0
 ```
+
+## Implementing the MVC on our endpoint
+
+Now we've seen we can get the webserver running and accept a query param being passed in we need to implement our endpoint. To do so we'll create a mock database with a map of faked users in the code for now. The purpose here is to see the layers in action an the endpoint returning data that matches query params as well as handling errors.
+
+Let's have a look at what we'll be implementing here as a concept.
+
+![](/02-mvc/assets/mvc-flow-model.png)
