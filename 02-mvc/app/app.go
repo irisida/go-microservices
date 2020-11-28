@@ -10,7 +10,7 @@ import (
 // in the project to start the application
 func StartApp() {
 	// getUser
-	http.HandleFunc("/users", controllers.GetUsers)
+	http.HandleFunc("/users", controllers.GetUser)
 
 	// ListenAndServe
 	if err := http.ListenAndServe(":8080", nil); err != nil {
