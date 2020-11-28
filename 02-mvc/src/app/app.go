@@ -3,7 +3,7 @@ package app
 import (
 	"net/http"
 
-	"github.com/irisida/go-microservices/02-mvc/controllers"
+	"github.com/irisida/go-microservices/02-mvc/src/controllers"
 )
 
 // StartApp is the ignition key called from the main.go
