@@ -62,3 +62,24 @@ We can see the service is pretty transparent in that it is simply an abstract to
 We can then see in the `DAO` that we are encapsulating the data layer concerns and this would allow us to make the persistence layer interchangeable if required.
 
 ![](/02-mvc/assets/mvc-dao-02.png)
+
+When running we can see the following for a condition for which we have no data.
+```shell
+❯ curl "localhost:8080/users?id=1234"
+user 1234 was not found%
+```
+
+For conditions that do exist, ie, user IDs `123` and `456`.
+```shell
+❯ curl "localhost:8080/users?id=456"
+{"ID":456,"Fname":"Four","Lname":"Fivesix","Email":"ol456@ohaye.oi"}%
+
+❯ curl "localhost:8080/users?id=123"
+{"ID":123,"Fname":"One","Lname":"Twothree","Email":"big123@wee123.net"}%
+```
+
+and for handling the badly formatted queries in the URL
+```shell
+❯ curl "localhost:8080/users?id=45ED"
+user id is not the correct format%
+```
