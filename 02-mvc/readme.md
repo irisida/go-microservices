@@ -53,7 +53,7 @@ So let's see how that looks in terms of code changes. We're adding in the servic
 
 The `main.go` and the `app.go` remain unchanged, so I will omit further screenshots here to save having to digest them again. Let's see how the controller has changed. The controller implementation is updated to call the service for `GetUser` and handle the returned user data and pss it as the response to our `get` request to the endpoint. Where the request was invalid or bad it should also handle the error as the response too.
 
-![](/02-mvs/assets/mvc-controller-02.png)
+![](/02-mvc/assets/mvc-controller-02.png)
 
 We can see the service is pretty transparent in that it is simply an abstract to the functionality of the `dao` in the domain layer. There's no much to add as its a straight through-and-through.
 
@@ -61,4 +61,4 @@ We can see the service is pretty transparent in that it is simply an abstract to
 
 We can then see in the `DAO` that we are encapsulating the data layer concerns and this would allow us to make the persistence layer interchangeable if required.
 
-![](/02-mvc/assets/mvc-dao.png)
+![](/02-mvc/assets/mvc-dao-02.png)
