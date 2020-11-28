@@ -29,16 +29,8 @@ func GetUser(res http.ResponseWriter, req *http.Request) {
 
 	user, APIError := services.GetUser(userID)
 	if APIError != nil {
-		notFound := &utils.ApplicationError{
-			Message:    "No match was found",
-			StatusCode: http.StatusNotFound,
-			Code:       "not found",
-		}
-
-		// handle err and return to the client
-		jsonValue, _ := json.Marshal(notFound)
 		res.WriteHeader(APIError.StatusCode)
-		res.Write(jsonValue)
+		res.Write([]byte(APIError.Message))
 		return
 	}
 
