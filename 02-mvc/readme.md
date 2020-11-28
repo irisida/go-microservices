@@ -83,3 +83,13 @@ and for handling the badly formatted queries in the URL
 ❯ curl "localhost:8080/users?id=45ED"
 user id is not the correct format%
 ```
+
+## Adding an Error handler
+
+Next improvement is to add an `ApplicationError` struct and we can handle errors in a more uniform way.
+
+![](/02-mvc/assets/mvc-app-err.png)
+
+Then we can update the sources using the error to take a pointer to this standardised type. We can see the demoed in the updated controller code below.
+
+![](/02-mvc/assets/mvc-err-updated.png)
