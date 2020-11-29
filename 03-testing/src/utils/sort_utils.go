@@ -1,5 +1,7 @@
 package utils
 
+import "sort"
+
 // BubbleSort sorting algo
 func BubbleSort(elements []int) []int {
 	running := true
@@ -14,5 +16,17 @@ func BubbleSort(elements []int) []int {
 			}
 		}
 	}
+	return elements
+}
+
+// SortEls takes in a slice of int and returns the sorted
+// list by choosing the appropriate sort method based on
+// the size of the elements list
+func SortEls(elements []int) []int {
+
+	if len(elements) < 2000 {
+		return BubbleSort(elements)
+	}
+	sort.Ints(elements)
 	return elements
 }

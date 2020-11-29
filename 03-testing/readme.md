@@ -188,3 +188,7 @@ func BenchmarkSort1000(b *testing.B) { // we're still slower on 1000 elements
 When we ramp this up to 100,000
 
 ![](/03-testing/assets/benchmark.png)
+
+so the optimal use of what we can see here is that somewhere between 1000 and say 50000 is the magic number where the `Go` native sort becomes much more efficient, now architectures are all very different but for me, it's nowhere near 50000. I'm actually happy with a flip of around 2000 so we can use a routine something like below.
+
+![](/03-testing/assets/sort-sort.png)
