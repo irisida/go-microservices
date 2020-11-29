@@ -55,3 +55,9 @@ Just as for a valid situation we should ensure:
 This fits the unit model in that we have a mocked database and this is a situation that can be mocked quite trivially and is isolated processing therefore it makes for a good unit test basis. So let's see how that looks. Note, we will use an additional import here as Go has no built-in assert library as found in some other languages but we have a 3rd party tool that offers the same job. If you object to a 3rd party addition for test code simplification you can achieve the same results with `if statements` and supply the testing object, the expected condition and the actual condition.
 
 ![](/03-testing/assets/unit-test.png)
+
+## Running the tests
+
+Now we can run the tests from the directory that contains them, which should be the same as the code itself, with `go test` or you can call the enclosing directory from the `$GOPATH` start point as the argument to `go test`.
+
+eg: assume our code is in the `$GOPATH/src/github.com/username/mvc/domain` directory. If we pass this as the argument the `go` tool will find the correct file, one which mimics the name of the go file under test and with a `_test.go` suffix.
