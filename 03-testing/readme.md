@@ -10,3 +10,7 @@ test types
 We can visualise that in the context of a solution as follows, note that parts making up the integration test layer will themselves be subject to unit tests as the various sets in the functional test will have both unit and integration level test layers.
 
 ![](/03-testing/assets/gotesting.png)
+
+With the types established we should now present the typical `perfect` scenario prescribed with the testing pyramid that sees 70% of total coverage at unit level, 20% at integration and 10% at end to end functional coverage. The model is great but we live in a imperfect world and sometimes we are forced to make tactical solutions, to ship software without adequate time for full testing coverage and other times we made be bolstering and retrofitting tests to existing software that is being reinvested in.
+
+![](/03-testing/assets/gotesting_types.png)
