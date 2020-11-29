@@ -41,6 +41,12 @@ and we can expert a response along the lines of What we see here.
 * Closing connection 0
 ```
 
+## But why the app.go file?
+
+Fair question, why are we calling a function from the main.go file that has the actual main application logic in it in the `app.go` file when we could simply move that logic to the `main.go` file and call it from there? In short, because it makes for easier testing. If we have everything in the main we have to call the main in the testing which effectively starts our application. When this logic is residing in another file we can call that logic using mocks etc.
+
+Might seem trivial at face value but it's a very useful pattern to have the `Go` predefined application entry point simply call a use defined application entry point.
+
 ## Implementing the MVC on our endpoint
 
 Now we've seen we can get the webserver running and accept a query param being passed in we need to implement our endpoint. To do so we'll create a mock database with a map of faked users in the code for now. The purpose here is to see the layers in action an the endpoint returning data that matches query params as well as handling errors.
