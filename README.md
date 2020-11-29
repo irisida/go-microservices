@@ -9,3 +9,4 @@
     - [But why do we need the app.go file?](/02-mvc#but-why-the-appgo-file)
     - [Implementing the endpoint with MVC](/02-mvc#implementing-the-mvc-on-our-endpoint)
     - [Adding a standardised Application Error handler](02-mvc#adding-an-error-handler)
+- [3 - Testing in Go](/03-testing)
