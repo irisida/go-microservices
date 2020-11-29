@@ -11,4 +11,5 @@
     - [Adding a standardised Application Error handler](02-mvc#adding-an-error-handler)
 - [3 - Testing in Go](/03-testing)
     - [unit testing](/03-testing#unit-testing)
-    - [ running the tests](/03-testing#running-the-tests)
+    - [running the tests](/03-testing#running-the-tests)
+    - [benchmarking](/03-testing#benchmarks)
