@@ -38,18 +38,18 @@ func GetUser(userID int64) (*User, *utils.ApplicationError) {
 ```
 
 We can observe that:
-- We have two returns to test
+- We have two `returns` to test
 - we have an error scenario where a user is not found.
 - We have a return where a user was matched.
 
 We can tell that the type of things we will want to check in the error situation are:
-- an error was raised
-- the error code was as expected
-- the error message was correct
-- the http.StatusCode is correct.
+- an `error` was raised
+- the error `Code` was as expected
+- the error `Message` was correct
+- the `http.StatusCode` is correct.
 
 Just as for a valid situation we should ensure:
-- the expected and actual ID do match
+- the expected and actual `ID` do match
 - Other values are as expected.
 
 This fits the unit model in that we have a mocked database and this is a situation that can be mocked quite trivially and is isolated processing therefore it makes for a good unit test basis. So let's see how that looks. Note, we will use an additional import here as Go has no built-in assert library as found in some other languages but we have a 3rd party tool that offers the same job. If you object to a 3rd party addition for test code simplification you can achieve the same results with `if statements` and supply the testing object, the expected condition and the actual condition.
