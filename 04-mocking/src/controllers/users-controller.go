@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/irisida/go-microservices/03-testing/src/services"
-	"github.com/irisida/go-microservices/03-testing/src/utils"
+	"github.com/irisida/go-microservices/04-mocking/src/services"
+	"github.com/irisida/go-microservices/04-mocking/src/utils"
 )
 
 // GetUser will return all users
@@ -27,7 +27,7 @@ func GetUser(res http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	user, APIError := services.GetUser(userID)
+	user, APIError := services.UsersService.GetUser(userID)
 	if APIError != nil {
 		jsonValue, _ := json.Marshal(APIError)
 		res.WriteHeader(APIError.StatusCode)

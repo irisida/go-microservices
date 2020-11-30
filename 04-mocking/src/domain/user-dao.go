@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/irisida/go-microservices/03-testing/src/utils"
+	"github.com/irisida/go-microservices/04-mocking/src/utils"
 )
 
 var (

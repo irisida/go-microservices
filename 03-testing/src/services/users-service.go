@@ -1,8 +1,8 @@
 package services
 
 import (
-	"github.com/irisida/go-microservices/02-mvc/src/domain"
-	"github.com/irisida/go-microservices/02-mvc/src/utils"
+	"github.com/irisida/go-microservices/03-testing/src/domain"
+	"github.com/irisida/go-microservices/03-testing/src/utils"
 )
 
 // GetUser is a wrapper that calls the
