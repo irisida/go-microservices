@@ -4,6 +4,7 @@ import (
 	"net/http"
 	"testing"
 
+	"github.com/irisida/go-microservices/02-mvc/src/services"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -12,7 +13,7 @@ import (
 // that an error is raised, if a user is found,
 // or if no error is raised then we have a fail.
 func TestGetUserNoUserFound(t *testing.T) {
-	user, err := GetUser(0)
+	user, err := services.GetUser(0)
 
 	assert.Nil(t, user, "Returned a user for id: 0 when no user was expected")
 	assert.NotNil(t, err)
@@ -23,7 +24,7 @@ func TestGetUserNoUserFound(t *testing.T) {
 }
 
 func TestGetUserForValidUser(t *testing.T) {
-	user, err := GetUser(123)
+	user, err := services.GetUser(123)
 	assert.Nil(t, err)
 	assert.NotNil(t, user)
 	assert.EqualValues(t, 123, user.ID)
