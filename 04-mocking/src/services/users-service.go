@@ -16,5 +16,9 @@ var (
 // function and passes along the provided userID to
 // search. A method of the usersService type
 func (u *usersService) GetUser(userID int64) (*domain.User, *utils.ApplicationError) {
-	return domain.UserDao.GetUser(userID)
+	user, err := domain.UserDao.GetUser(userID)
+	if err != nil {
+		return nil, err
+	}
+	return user, nil
 }
