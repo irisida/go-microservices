@@ -14,3 +14,4 @@
     - [running the tests](/03-testing#running-the-tests)
     - [benchmarking](/03-testing#benchmarks)
 - [ 4 - Mocking](/04-mocking)
+- [ 5 - Gin-gonic framework](/05-gin)
