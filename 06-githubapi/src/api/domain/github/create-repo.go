@@ -23,7 +23,7 @@ type CreateRepoRequest struct {
 	HasWiki     bool   `json:"has_wiki"`
 }
 
-type CreateRepoResonse struct {
+type CreateRepoResponse struct {
 	Id          int64           `json:"id"`
 	Name        string          `json:"name"`
 	FullName    string          `json:"full_name"`
