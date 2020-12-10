@@ -26,8 +26,10 @@ func CreateRepo(accessToken string, req github.CreateRepoRequest) (*github.Creat
 	headers.Set(headerAuthorization, getAuthorizationHeader(accessToken))
 
 	res, err := restclient.Post(urlCreateRepo, req, headers)
+	fmt.Println(res)
+	fmt.Println(err)
 	if err != nil {
-		log.Println("Error trying to create the %s repository.", err.Error())
+		log.Printf("Error message: %s.", err.Error())
 		return nil, &github.GithubErrorResponse{
 			StatusCode: http.StatusInternalServerError,
 			Message:    err.Error(),
@@ -42,7 +44,7 @@ func CreateRepo(accessToken string, req github.CreateRepoRequest) (*github.Creat
 	if err != nil {
 		return nil, &github.GithubErrorResponse{
 			StatusCode: http.StatusInternalServerError,
-			Message:    "invalid response",
+			Message:    "Invalid response body",
 		}
 	}
 
@@ -52,7 +54,7 @@ func CreateRepo(accessToken string, req github.CreateRepoRequest) (*github.Creat
 		if err := json.Unmarshal(bytes, &errResponse); err != nil {
 			return nil, &github.GithubErrorResponse{
 				StatusCode: http.StatusInternalServerError,
-				Message:    "Invalid response body",
+				Message:    "Invalid response",
 			}
 		}
 		// get the statuscode of the response and set in errResponse
@@ -61,13 +63,13 @@ func CreateRepo(accessToken string, req github.CreateRepoRequest) (*github.Creat
 	}
 
 	var result github.CreateRepoResponse
-	if err := json.Unmarshal(bytes, &errResponse); err != nil {
-		log.Println("Error trying to unmarshal the create %s repository response.", err.Error())
+	if err := json.Unmarshal(bytes, &result); err != nil {
+		log.Printf("Error trying to unmarshal the create %s repository response.", err.Error())
 		return nil, &github.GithubErrorResponse{
 			StatusCode: http.StatusInternalServerError,
 			Message:    "Error unmarshaling the create repository response",
 		}
 	}
 
-	return &github.CreateRepoResponse{}, nil
+	return &result, nil
 }
