@@ -2,7 +2,8 @@ package errors
 
 import "net/http"
 
-type ApiError interface {
+// APIError - error interface
+type APIError interface {
 	Status() int
 	Message() string
 	Error() string
@@ -11,7 +12,7 @@ type ApiError interface {
 type apiError struct {
 	ErrStatus  int    `json:"status"`
 	ErrMessage string `json:"message"`
-	ErrErr     string `json:"error, omitempty"`
+	ErrErr     string `json:"error,omitempty"`
 }
 
 func (e *apiError) Status() int {
@@ -26,29 +27,32 @@ func (e *apiError) Error() string {
 	return e.ErrErr
 }
 
-func NewNotFoundApiError(message string) ApiError {
+// NewNotFoundAPIError - raised on a not found case
+func NewNotFoundAPIError(message string) APIError {
 	return &apiError{
 		ErrStatus:  http.StatusNotFound,
 		ErrMessage: message,
 	}
 }
 
-func NewInternalServerError(message string) ApiError {
+// NewInternalServerError - raised on an internal server error
+func NewInternalServerError(message string) APIError {
 	return &apiError{
 		ErrStatus:  http.StatusInternalServerError,
 		ErrMessage: message,
 	}
 }
 
-func NewBadRequestApiError(message string) ApiError {
+// NewBadRequestAPIError - raised for a bad request
+func NewBadRequestAPIError(message string) APIError {
 	return &apiError{
 		ErrStatus:  http.StatusBadRequest,
 		ErrMessage: message,
 	}
 }
 
-// NewApiError for untrapped errors
-func NewApiError(statusCode int, message string) ApiError {
+// NewAPIError for untrapped errors
+func NewAPIError(statusCode int, message string) APIError {
 	return &apiError{
 		ErrStatus:  statusCode,
 		ErrMessage: message,

@@ -13,7 +13,7 @@ import (
 type repoService struct{}
 
 type repoServiceInterface interface {
-	CreateRepo(request repositories.CreateRepoRequest) (*repositories.CreateRepoResponse, errors.ApiError)
+	CreateRepo(request repositories.CreateRepoRequest) (*repositories.CreateRepoResponse, errors.APIError)
 }
 
 var (
@@ -25,11 +25,11 @@ func init() {
 	RepositoryService = &repoService{}
 }
 
-func (s *repoService) CreateRepo(input repositories.CreateRepoRequest) (*repositories.CreateRepoResponse, errors.ApiError) {
+func (s *repoService) CreateRepo(input repositories.CreateRepoRequest) (*repositories.CreateRepoResponse, errors.APIError) {
 	input.Name = strings.TrimSpace(input.Name)
 
 	if input.Name == "" {
-		return nil, errors.NewBadRequestApiError("invalid repository name")
+		return nil, errors.NewBadRequestAPIError("invalid repository name")
 	}
 
 	request := github.CreateRepoRequest{
@@ -40,7 +40,7 @@ func (s *repoService) CreateRepo(input repositories.CreateRepoRequest) (*reposit
 
 	res, err := github_provider.CreateRepo(config.GetGithubAccessToken(), request)
 	if err != nil {
-		return nil, errors.NewApiError(err.StatusCode, err.Message)
+		return nil, errors.NewAPIError(err.StatusCode, err.Message)
 	}
 
 	result := repositories.CreateRepoResponse{
