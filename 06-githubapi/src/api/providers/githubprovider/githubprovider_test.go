@@ -1,4 +1,4 @@
-package github_provider
+package githubprovider
 
 import (
 	"errors"
