@@ -21,13 +21,12 @@ func getAuthorizationHeader(accessToken string) string {
 	return fmt.Sprintf(headerAuthorizationFormat, accessToken)
 }
 
+// CreateRepo - call to create a new repo on GitHub
 func CreateRepo(accessToken string, req github.CreateRepoRequest) (*github.CreateRepoResponse, *github.GithubErrorResponse) {
 	headers := http.Header{}
 	headers.Set(headerAuthorization, getAuthorizationHeader(accessToken))
 
 	res, err := restclient.Post(urlCreateRepo, req, headers)
-	fmt.Println(res)
-	fmt.Println(err)
 	if err != nil {
 		log.Printf("Error message: %s.", err.Error())
 		return nil, &github.GithubErrorResponse{
@@ -48,7 +47,8 @@ func CreateRepo(accessToken string, req github.CreateRepoRequest) (*github.Creat
 		}
 	}
 
-	// blown the success code range. We have an error
+	// we've blown the success code range at this point.
+	// We must have an error!
 	if res.StatusCode > 299 {
 		var errResponse github.GithubErrorResponse
 		if err := json.Unmarshal(bytes, &errResponse); err != nil {
@@ -57,7 +57,8 @@ func CreateRepo(accessToken string, req github.CreateRepoRequest) (*github.Creat
 				Message:    "Invalid response",
 			}
 		}
-		// get the statuscode of the response and set in errResponse
+		// get the statuscode of the response
+		// and set in the errResponse
 		errResponse.StatusCode = res.StatusCode
 		return nil, &errResponse
 	}
