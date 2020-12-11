@@ -3,11 +3,11 @@ package config
 import "os"
 
 const (
-	apiGithubAccessToken = "SECRET_GITHUB_ACCESS_TOKEN"
+	secretGithubAccessToken = "SECRET_GITHUB_ACCESS_TOKEN"
 )
 
 var (
-	githubAccessToken = os.Getenv(apiGithubAccessToken)
+	githubAccessToken = os.Getenv(secretGithubAccessToken)
 )
 
 // GetGithubAccessToken - public accessor for our token
