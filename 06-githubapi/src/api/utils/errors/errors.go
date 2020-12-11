@@ -1,6 +1,10 @@
 package errors
 
-import "net/http"
+import (
+	"encoding/json"
+	"errors"
+	"net/http"
+)
 
 // APIError - error interface
 type APIError interface {
@@ -25,6 +29,15 @@ func (e *apiError) Message() string {
 
 func (e *apiError) Error() string {
 	return e.ErrErr
+}
+
+// NewAPIErrorFromBytes - raised when testing json of bytes array
+func NewAPIErrorFromBytes(body []byte) (APIError, error) {
+	var res apiError
+	if err := json.Unmarshal(body, &res); err != nil {
+		return nil, errors.New("invalid json body")
+	}
+	return &res, nil
 }
 
 // NewNotFoundAPIError - raised on a not found case
