@@ -17,3 +17,4 @@
 - [5 - Gin-gonic framework](/05-gin)
 - [6 - GitHub api project](/06-githubapi)
     - [Marshaling and unmarshaling with JSON](/06-githubapi#marshal)
+- [7 - Concurrency and the api](/07-concurrentapi)
