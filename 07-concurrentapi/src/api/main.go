@@ -1,6 +1,6 @@
 package main
 
-import "github.com/irisida/go-microservices/06-githubapi/src/api/app"
+import "github.com/irisida/go-microservices/07-concurrentapi/src/api/app"
 
 func main() {
 	app.StartApp()

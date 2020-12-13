@@ -7,8 +7,8 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/irisida/go-microservices/06-githubapi/src/api/clients/restclient"
-	"github.com/irisida/go-microservices/06-githubapi/src/api/domain/github"
+	"github.com/irisida/go-microservices/07-concurrentapi/src/api/clients/restclient"
+	"github.com/irisida/go-microservices/07-concurrentapi/src/api/domain/github"
 )
 
 const (

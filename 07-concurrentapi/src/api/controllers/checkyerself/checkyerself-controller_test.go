@@ -5,7 +5,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/irisida/go-microservices/06-githubapi/src/api/utils/testutils"
+	"github.com/irisida/go-microservices/07-concurrentapi/src/api/utils/testutils"
 	"github.com/stretchr/testify/assert"
 )
 

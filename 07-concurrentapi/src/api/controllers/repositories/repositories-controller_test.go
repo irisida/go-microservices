@@ -9,10 +9,10 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/irisida/go-microservices/06-githubapi/src/api/clients/restclient"
-	"github.com/irisida/go-microservices/06-githubapi/src/api/domain/repositories"
-	"github.com/irisida/go-microservices/06-githubapi/src/api/utils/errors"
-	"github.com/irisida/go-microservices/06-githubapi/src/api/utils/testutils"
+	"github.com/irisida/go-microservices/07-concurrentapi/src/api/clients/restclient"
+	"github.com/irisida/go-microservices/07-concurrentapi/src/api/domain/repositories"
+	"github.com/irisida/go-microservices/07-concurrentapi/src/api/utils/errors"
+	"github.com/irisida/go-microservices/07-concurrentapi/src/api/utils/testutils"
 	"github.com/stretchr/testify/assert"
 )
 

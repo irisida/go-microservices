@@ -35,7 +35,7 @@ func (e *apiError) Error() string {
 func NewAPIErrorFromBytes(body []byte) (APIError, error) {
 	var res apiError
 	if err := json.Unmarshal(body, &res); err != nil {
-		return nil, errors.New("invalid json body")
+		return nil, errors.New("invalid json body - newapiErrorFromBytes")
 	}
 	return &res, nil
 }
