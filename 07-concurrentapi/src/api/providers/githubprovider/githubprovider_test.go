@@ -117,7 +117,7 @@ func TestCreateRepoInvalidResponseOnSuccess(t *testing.T) {
 	assert.EqualValues(t, "Error unmarshaling the create repository response", err.Message)
 }
 
-func TestCreateRepoWithSuccess(t *testing.T) {
+func TestCreateRepoNoError(t *testing.T) {
 	restclient.FlushMocks()
 	restclient.AddMockup(restclient.Mock{
 		URL:        "https://api.github.com/user/repos",
