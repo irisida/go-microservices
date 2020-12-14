@@ -26,12 +26,12 @@ type CreateRepoResponse struct {
 	Owner string `json:"owner"`
 }
 
-type CreateMultipleReposResponse struct {
-	StatusCode int                         `json:"status"`
-	Results    []CreateMultipleReposResult `json:"results"`
+type CreateManyRepositoriesResponse struct {
+	StatusCode int                            `json:"status"`
+	Results    []CreateManyRepositoriesResult `json:"results"`
 }
 
-type CreateMultipleReposResult struct {
+type CreateManyRepositoriesResult struct {
 	Response *CreateRepoResponse `json:"repo"`
 	Error    errors.APIError     `json:"error"`
 }

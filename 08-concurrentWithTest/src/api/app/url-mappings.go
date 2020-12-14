@@ -8,5 +8,5 @@ import (
 func mapUrls() {
 	router.GET("/checkyerself", checkyerself.WreckYerself)
 	router.POST("/repository", repositories.CreateRepo)
-	router.POST("/repositories", repositories.CreateMultipleRepos)
+	router.POST("/repositories", repositories.CreateManyRepositories)
 }

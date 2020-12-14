@@ -15,7 +15,7 @@ type repoService struct{}
 
 type repoServiceInterface interface {
 	CreateRepo(request repositories.CreateRepoRequest) (*repositories.CreateRepoResponse, errors.APIError)
-	CreateMultipleRepos(request []repositories.CreateRepoRequest) (repositories.CreateMultipleReposResponse, errors.APIError)
+	CreateManyRepositories(request []repositories.CreateRepoRequest) (repositories.CreateManyRepositoriesResponse, errors.APIError)
 }
 
 var (
@@ -51,9 +51,9 @@ func (s *repoService) CreateRepo(input repositories.CreateRepoRequest) (*reposit
 	return &result, nil
 }
 
-func (s *repoService) CreateMultipleRepos(requests []repositories.CreateRepoRequest) (repositories.CreateMultipleReposResponse, errors.APIError) {
-	input := make(chan repositories.CreateMultipleReposResult)
-	output := make(chan repositories.CreateMultipleReposResponse)
+func (s *repoService) CreateManyRepositories(requests []repositories.CreateRepoRequest) (repositories.CreateManyRepositoriesResponse, errors.APIError) {
+	input := make(chan repositories.CreateManyRepositoriesResult)
+	output := make(chan repositories.CreateManyRepositoriesResponse)
 	defer close(output)
 
 	var wg sync.WaitGroup
@@ -90,11 +90,11 @@ func (s *repoService) CreateMultipleRepos(requests []repositories.CreateRepoRequ
 	return result, nil
 }
 
-func (s *repoService) handleRepoResults(wg *sync.WaitGroup, input chan repositories.CreateMultipleReposResult, output chan repositories.CreateMultipleReposResponse) {
-	var results repositories.CreateMultipleReposResponse
+func (s *repoService) handleRepoResults(wg *sync.WaitGroup, input chan repositories.CreateManyRepositoriesResult, output chan repositories.CreateManyRepositoriesResponse) {
+	var results repositories.CreateManyRepositoriesResponse
 
 	for incomingEvent := range input {
-		repoResult := repositories.CreateMultipleReposResult{
+		repoResult := repositories.CreateManyRepositoriesResult{
 			Response: incomingEvent.Response,
 			Error:    incomingEvent.Error,
 		}
@@ -106,18 +106,18 @@ func (s *repoService) handleRepoResults(wg *sync.WaitGroup, input chan repositor
 	output <- results
 }
 
-func (s *repoService) createRepoConcurrent(input repositories.CreateRepoRequest, output chan repositories.CreateMultipleReposResult) {
+func (s *repoService) createRepoConcurrent(input repositories.CreateRepoRequest, output chan repositories.CreateManyRepositoriesResult) {
 	if err := input.Validate(); err != nil {
-		output <- repositories.CreateMultipleReposResult{Error: err}
+		output <- repositories.CreateManyRepositoriesResult{Error: err}
 		return
 	}
 
 	result, err := s.CreateRepo(input)
 
 	if err != nil {
-		output <- repositories.CreateMultipleReposResult{Error: err}
+		output <- repositories.CreateManyRepositoriesResult{Error: err}
 		return
 	}
 
-	output <- repositories.CreateMultipleReposResult{Response: result}
+	output <- repositories.CreateManyRepositoriesResult{Response: result}
 }

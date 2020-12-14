@@ -29,8 +29,8 @@ func CreateRepo(c *gin.Context) {
 	c.JSON(http.StatusCreated, result)
 }
 
-// CreateMultipleRepos main controller
-func CreateMultipleRepos(c *gin.Context) {
+// CreateManyRepositories main controller
+func CreateManyRepositories(c *gin.Context) {
 	var request []repositories.CreateRepoRequest
 	if err := c.ShouldBindJSON(&request); err != nil {
 		// cannot create valid json as the body of the request.
@@ -39,7 +39,7 @@ func CreateMultipleRepos(c *gin.Context) {
 		return
 	}
 
-	result, err := services.RepositoryService.CreateMultipleRepos(request)
+	result, err := services.RepositoryService.CreateManyRepositories(request)
 	if err != nil {
 		c.JSON(err.Status(), err)
 		return
